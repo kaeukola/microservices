@@ -1,0 +1,32 @@
+spring:
+  rabbitmq:
+    addresses: localhost:5672
+  cloud:
+    config:
+      enabled: true
+      server:         
+        monitor: 
+          github: false                             
+        native:
+          search-locations: file://${config.location.path:/C:/working/sbaone-git-microservices/microservices-poc/configurations_external}
+          
+ 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${registry.service.host:localhost}:${registry.service.port:8761}/eureka/
+  instance:    
+    statusPageUrlPath: /admin/info
+    healthCheckUrlPath: /admin/health
+    
+    
+
+#leaseRenewalIntervalInSeconds: 10    
+    
+#spring.cloud.config.server.monitor.{github|gitlab|bitbucket}.enabled=false
+#spring.cloud.config.server.monitor.github=false
+        #git:
+          #uri: file://${config.location.path:/C:/working/sbaone-git-microservices/microservices-poc/configurations_external}
+                                   
+  #monitor: 
+   #       github: false  

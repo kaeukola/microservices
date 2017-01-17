@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: ${config.server.name:ConfigServer}
+  profiles:
+    active: native
+server:
+  port: ${config.server.port:8888}
+  address: ${config.server.host:localhost}
+eureka:
+  instance:
+    nonSecurePort: ${config.server.port:8888}
+  client:
+    serviceUrl:
+      defaultZone: http://${registry.service.host:localhost}:${registry.service.port:8761}/eureka/
+      
+endpoints:
+  restart:
+    enabled: true

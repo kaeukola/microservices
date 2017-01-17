@@ -1,0 +1,19 @@
+ribbon:
+  client:
+    name: sbaoneCachingClient
+sbaoneCachingClient:
+  ribbon:
+    NIWSServerListClassName:  com.netflix.niws.loadbalancer.DiscoveryEnabledNIWSServerList
+    DeploymentContextBasedVipAddresses: sbaone-caching-service
+    NIWSServerListFilterClassName:  com.netflix.loadbalancer.ServerListSubsetFilter
+    EnableZoneAffinity: false
+    listOfServers: localhost:2222
+    ReadTimeout: 5000
+    MaxAutoRetries: 2
+    ServerListRefreshInterval: 6
+server:
+  port: 5555
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

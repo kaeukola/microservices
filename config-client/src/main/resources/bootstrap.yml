@@ -1,0 +1,27 @@
+spring:  
+  application:
+    name: ConfigClient
+  profiles:
+    active: development
+  rabbitmq: 
+    addresses: localhost:5672    
+  cloud:
+    config:
+      enabled: true      
+      name: ConfigServer
+      uri: http://${config.server.host:localhost}:${config.server.port:8888}
+  
+server:
+  port: ${config.client.port:6666}
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://${registry.service.host:localhost}:${registry.service.port:8761}/eureka/
+
+
+  
+endpoints:
+  restart:
+    enabled: true
